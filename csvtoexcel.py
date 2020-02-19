@@ -39,7 +39,11 @@ with open('./spese.csv') as csv_file:
                     else:
                         worksheet.write(row, col, line[col])
                 row+=1
-            
-    
-    workbook.close()
+worksheet.write(row, 0, 'Totale:', bold)
+worksheet.write(row, 2, uscite, bold)
+worksheet.write(row, 3, entrate, bold)
+row+=2
+worksheet.write(row, 0, 'Totale mancante: ', bold)
+worksheet.write(row, 1, uscite-entrate, bold)
+workbook.close()
         
