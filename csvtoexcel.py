@@ -4,7 +4,6 @@ workbook = xlsxwriter.Workbook('./Spese01.xlsx')
 worksheet = workbook.add_worksheet()
 bold = workbook.add_format({'bold': True})
 money = workbook.add_format({'num_format': '€#,#0'})
-# worksheet.set_column()
 entrate = 0
 uscite = 0
 
@@ -26,15 +25,15 @@ with open('./spese.csv') as csv_file:
                 for col in range(4):
                     if col==2:
                         num = float(line[col].lstrip())
-                        if num<0:
+                        if num < 0:
                             num = abs(num)
-                            uscite+=num
+                            uscite += num
                             worksheet.write(row, col, num, money)
                         else:
                             num = abs(num)
-                            entrate+=num
+                            entrate += num
                             worksheet.write(row, col+1, num, money)
-                    elif col==3:
+                    elif col == 3:
                         worksheet.write(row, col+1, line[col])
                     else:
                         worksheet.write(row, col, line[col])
